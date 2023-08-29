@@ -1,23 +1,16 @@
-import axios from 'axios';
+import { AxiosResponse } from 'axios';
 import { api } from './api';
+import { GitHubRepository, Github } from 'types/gh';
 
 export class GithubService {
-  public async getHello() {
-    const response = await axios.get('api/hello');
-    return response.data;
-  }
-  public async getUser(username: string) {
-    const response = await api.get(`/users/${username}`);
+  public async getUser(): Promise<AxiosResponse<Github>> {
+    const response = await api.get('/api/gh');
     return response.data;
   }
 
-  public async getRepos(username: string) {
-    const response = await api.get(`/users/${username}/repos`);
-    return response.data;
-  }
-
-  public async getRepo(username: string, repo: string) {
-    const response = await api.get(`/repos/${username}/${repo}`);
-    return response.data;
+  public async getRepos(): Promise<AxiosResponse<GitHubRepository[]>> {
+    const response = await api.get('/api/repos');
+    
+    return response;
   }
 }

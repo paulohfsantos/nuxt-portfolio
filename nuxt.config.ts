@@ -8,6 +8,9 @@ export default defineNuxtConfig({
       ['defineStore', 'definePiniaStore'],
     ],
   },
+  imports: {
+    dirs: ['./store']
+  },
   app: {
     head: {
       title: 'Portfolio - Paulo Santos',

@@ -1,20 +1,26 @@
 <template>
   <div>
-    <Header />
+    <app-header />
+    
+    <div class="hero min-h-screen bg-base-200">
+      <div class="hero-content">
+        <div class="max-w-xl">
+          <!-- <card :items="repos" /> -->
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
-<script lang="ts">
-import { onMounted } from 'vue';
+<script setup lang="ts">
+import { onMounted, computed } from 'vue';
 import { themeChange } from 'theme-change';
 import { useGithubStore } from '../store/gh';
+import { storeToRefs } from 'pinia';
 
-import Header from 'components/Header.vue';
-
-const { hello } = useGithubStore();
-
+const store = useGithubStore();
 onMounted(() => {
   themeChange(false);
-  hello();
+  store.getUser().then((res) => {});
 });
 </script>

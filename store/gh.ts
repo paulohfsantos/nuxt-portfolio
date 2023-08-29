@@ -1,26 +1,60 @@
-import { ref } from "vue";
-import { defineStore } from "pinia";
 import { Github, GitHubRepository } from "../types/gh";
 import { GithubService } from "../services/gh";
+import { acceptHMRUpdate } from "pinia";
 
 export const useGithubStore = defineStore("github", () => {
   const gh = new GithubService();
-  const gh_user = ref("");
+  
+  const gh_user = ref<Github>({
+    avatar_url: "",
+    bio: "",
+    blog: "",
+    company: "",
+    created_at: "",
+    email: "",
+    events_url: "",
+    followers: 0,
+    followers_url: "",
+    following: 0,
+    following_url: "",
+    gists_url: "",
+    gravatar_id: "",
+    hireable: false,
+    html_url: "",
+    id: 0,
+    location: "",
+    login: "",
+    name: "",
+    node_id: "",
+    organizations_url: "",
+    public_gists: 0,
+    public_repos: 0,
+    received_events_url: "",
+    repos_url: "",
+    site_admin: false,
+    starred_url: "",
+    subscriptions_url: "",
+    twitter_username: "",
+    type: "",
+    updated_at: "",
+    url: "",
+  });
   const gh_repos = ref<GitHubRepository[]>([]);
 
-  async function getUser(username: string) {
-    const user = await gh.getUser(username);
-    gh_user.value = user;
+  async function getUser() {
+    const user = await gh.getUser();
+    console.log(user);
+    gh_user.value = user.data;
+
+    return user.data;
   }
 
-  async function getRepos(username: string) {
-    const repos = await gh.getRepos(username);
-    gh_repos.value = repos;
-  }
+  async function getRepos() {
+    const repos = await gh.getRepos();
+    console.log(repos);
+    gh_repos.value = repos.data;
 
-  async function hello() {
-    const hello = await gh.getHello();
-    console.log(hello);
+    return repos.data;
   }
 
   return {
@@ -28,6 +62,11 @@ export const useGithubStore = defineStore("github", () => {
     gh_repos,
     getUser,
     getRepos,
-    hello,
   };
 });
+
+// if (import.meta.hot) {
+//   import.meta.hot.accept(
+//     acceptHMRUpdate(useGithubStore, import.meta.hot),
+//   )
+// }
