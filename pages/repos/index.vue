@@ -2,6 +2,9 @@
   <section class="flex justify-center min-h-screen bg-base-200">
     <div class="hero-content">
       <div>
+        <div class="w-full my-2 flex justify-center items-center">
+          <span class="text-lg text-center">Repository List</span>
+        </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-4">
           <repo-card :repos="repos_data" />
         </div>

@@ -16,10 +16,10 @@
               :icon="formatLanguageForMDI(repo.language as MdiIconString)"
             />
           </span>
-        </div>
-        <div class="mt-2" v-if="repo.fork">
-          <strong>Fork:</strong>
-          <div class="ml-2 badge badge-success">{{ repo.fork }}</div>
+          <span class="ml-2" v-if="repo.fork">
+            <strong>Fork:</strong>
+            <div class="ml-2 badge badge-success">{{ repo.fork ? 'Yes' : '' }}</div>
+          </span>
         </div>
       </div>
     </div>
