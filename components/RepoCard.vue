@@ -8,16 +8,18 @@
       <div class="card-title text-lg">{{ repo.name }}</div>
 
       <div class="text-sm">
-        <div>
+        <div class="my-1 divider"></div>
+        <div class="flex justify-center items-center">
           <strong>Language:</strong>
-          <span :class="customClassLanguage(repo.language as string)">
+          <span class="ml-3" :class="customClassLanguage(repo.language as string)">
             <mdi-icon
               :icon="formatLanguageForMDI(repo.language as MdiIconString)"
             />
           </span>
         </div>
-        <div>
-          <strong>Fork:</strong> <span>{{ repo.fork }}</span>
+        <div class="mt-2" v-if="repo.fork">
+          <strong>Fork:</strong>
+          <div class="ml-2 badge badge-success">{{ repo.fork }}</div>
         </div>
       </div>
     </div>
