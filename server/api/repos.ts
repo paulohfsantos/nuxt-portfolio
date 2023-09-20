@@ -1,3 +1,11 @@
+import { useRuntimeConfig } from 'nuxt/app';
+
 export default defineEventHandler((event) => {
-  return $fetch(`https://api.github.com/users/paulohfsantos/repos`)
+  const config = useRuntimeConfig();
+  const url = `${config.public.apiUrl}/users/paulohfsantos`;
+  const token = config.public.apiSecret;
+
+  return $fetch(`${url}/users/paulohfsantos/repos`, {
+    headers: { Authorization: `token ${token}` }
+  })
 })

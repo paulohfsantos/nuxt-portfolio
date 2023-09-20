@@ -9,7 +9,7 @@
       <li class="mb-3">
         <span class="px-3 py-1 cursor-move">{{ username }}</span>
       </li>
-      <li class=" mb-3">
+      <li class="d-none mb-3">
         <span class="px-3 py-1 cursor-move">{{ email }}</span>
       </li>
       <li>

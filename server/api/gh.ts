@@ -1,10 +1,11 @@
+import { useRuntimeConfig } from 'nuxt/app';
+
 export default defineEventHandler((event) => {
-  const url = process.env.GH_URL
-  const token = process.env.GH_TOKEN
-  
+  const config = useRuntimeConfig();
+  const url = `${config.apiUrl}/users/paulohfsantos`;
+  const token = config.public.apiSecret;
+
   return $fetch(`${url}/users/paulohfsantos`, {
-    headers: {
-      Authorization: `token ${process.env.GH_TOKEN}`
-    }
+    headers: { Authorization: `token ${token}` }
   })
 })

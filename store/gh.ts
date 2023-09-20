@@ -1,72 +1,56 @@
 import { Github, GitHubRepository } from "../types/gh";
 import { GithubService } from "../services/gh";
-import { acceptHMRUpdate } from "pinia";
 
 export const useGithubStore = defineStore("github", () => {
   const gh = new GithubService();
   
-  const gh_user = ref<Github>({
-    avatar_url: "",
-    bio: "",
-    blog: "",
-    company: "",
-    created_at: "",
-    email: "",
-    events_url: "",
-    followers: 0,
-    followers_url: "",
-    following: 0,
-    following_url: "",
-    gists_url: "",
-    gravatar_id: "",
-    hireable: false,
-    html_url: "",
-    id: 0,
-    location: "",
-    login: "",
-    name: "",
-    node_id: "",
-    organizations_url: "",
-    public_gists: 0,
-    public_repos: 0,
-    received_events_url: "",
-    repos_url: "",
-    site_admin: false,
-    starred_url: "",
-    subscriptions_url: "",
-    twitter_username: "",
-    type: "",
-    updated_at: "",
-    url: "",
-  });
-  const gh_repos = ref<GitHubRepository[]>([]);
+  const gh_user = ref<Github | unknown>();
+  const gh_repos = ref<GitHubRepository[] | unknown>([]);
+
+  function setUser(user: Github) {
+    gh_user.value = user;
+  }
+
+  function setRepos(repos: GitHubRepository[]) {
+    gh_repos.value = repos;
+  }
 
   async function getUser() {
     const user = await gh.getUser();
-    console.log(user);
-    gh_user.value = user.data;
+    gh_user.value = user;
 
-    return user.data;
+    return user;
   }
 
   async function getRepos() {
     const repos = await gh.getRepos();
-    console.log(repos);
-    gh_repos.value = repos.data;
+    gh_repos.value = repos;
 
-    return repos.data;
+    return repos;
+  }
+
+  async function getReposOctokit() {
+    const repos = await gh.getReposOctokit();
+    gh_repos.value = repos;
+
+    return repos;
+  }
+
+  async function getReposOctokitByName(name: string) {
+    const repos = await gh.getReposOctokitByName(name);
+    gh_repos.value = repos;
+
+    return repos;
   }
 
   return {
     gh_user,
     gh_repos,
+    setRepos,
+    setUser,
     getUser,
     getRepos,
+    getReposOctokit,
+    getReposOctokitByName
   };
 });
-
-// if (import.meta.hot) {
-//   import.meta.hot.accept(
-//     acceptHMRUpdate(useGithubStore, import.meta.hot),
-//   )
-// }

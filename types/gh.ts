@@ -1,3 +1,5 @@
+import { Endpoints } from '@octokit/types';
+
 export interface Github {
   login: string;
   id: number;
@@ -41,3 +43,7 @@ export interface GitHubRepository {
   private: boolean;
   owner: Github;
 }
+
+export type UserRepos = Endpoints['GET /users/{username}/repos']['response']['data'];
+export type UserRepo = Endpoints['GET /repos/{owner}/{repo}']['response']['data'];
+export type GithubUser = Endpoints['GET /users/{username}']['response']['data'];

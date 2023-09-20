@@ -1,7 +1,13 @@
 export default defineNuxtConfig({
   devtools: { enabled: false },
   css: ['/assets/main.css'],
-  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt'],
+  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', 'nuxt-mdi'],
+  runtimeConfig: {
+    public: {
+      apiUrl: process.env.NUXT_PUBLIC_API_BASE,
+      apiSecret: process.env.NUXT_PUBLIC_API_SECRET,
+    }
+  },
   pinia: {
     autoImports: [
       'defineStore',
@@ -9,11 +15,11 @@ export default defineNuxtConfig({
     ],
   },
   imports: {
-    dirs: ['./store']
+    dirs: ['./store'],
   },
   app: {
     head: {
       title: 'Portfolio - Paulo Santos',
     }
-  }
+  },
 })
