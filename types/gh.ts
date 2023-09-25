@@ -1,4 +1,5 @@
 import { Endpoints } from '@octokit/types';
+import { MdiIconString } from 'nuxt-mdi/dist/runtime/components/MdiIcon';
 
 export interface Github {
   login: string;
@@ -42,6 +43,19 @@ export interface GitHubRepository {
   full_name: string;
   private: boolean;
   owner: Github;
+}
+
+export interface IProject {
+  id: number;
+  name: string;
+  description: string;
+  url: string;
+  techs: ITech[];
+}
+
+export interface ITech {
+  name: string;
+  icon: MdiIconString;
 }
 
 export type UserRepos = Endpoints['GET /users/{username}/repos']['response']['data'];

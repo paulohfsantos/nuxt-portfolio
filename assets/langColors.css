@@ -1,0 +1,55 @@
+.text-base-content {
+  color: #3973aa;
+}
+
+.typescript-lang {
+  color: #3973aa;
+}
+
+.javascript-lang {
+  color: #f1e05a;
+}
+
+.kotlin-lang {
+  color: #6c33f1;
+}
+
+.java-lang {
+  color: #b07219;
+}
+
+.vue-lang {
+  color: #41b883;
+}
+
+.scss-lang {
+  color: #c69;
+}
+
+.database-lang {
+  color: #00758f;
+}
+
+.react-lang {
+  color: #61dafb;
+}
+
+.tailwind-lang {
+  color: #38b2ac;
+}
+
+.postgresql-lang {
+  color: #336791;
+}
+
+.nuxt-lang {
+  color: #00c58e;
+}
+
+.spring-boot-lang {
+  color: #6db33f;
+}
+
+.docker-lang {
+  color: #2496ed;
+}

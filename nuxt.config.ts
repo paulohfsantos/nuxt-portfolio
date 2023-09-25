@@ -1,6 +1,6 @@
 export default defineNuxtConfig({
   devtools: { enabled: false },
-  css: ['/assets/main.css'],
+  css: ['/assets/main.css', '/assets/langColors.css'],
   modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', 'nuxt-mdi'],
   runtimeConfig: {
     public: {

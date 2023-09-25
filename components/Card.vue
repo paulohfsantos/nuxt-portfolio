@@ -3,7 +3,8 @@
     <img class="w-full" :src="user_data.avatar_url" alt="img_avatar" />
     <div class="card-body">
       <h2 class="card-title">{{ user_data.name }}</h2>
-      <p>bio: {{ user_data.bio }}</p>
+      <p class="flex"> <mdi-icon class="ml-0 mr-2" icon="mdiInformation" /> {{ user_data.bio }}</p>
+      <p class="flex"> <mdi-icon class="ml-0 mr-2" icon="mdiPin" /> {{ user_data.location }}</p>
       <div class="mt-3">
         <span>socials:</span>
         <ul class="flex mt-1">
@@ -20,7 +21,12 @@
         </ul>
       </div>
       <div class="card-actions justify-end">
-        <button @click="goToRepos" class="btn btn-primary">Continue...</button>
+        <button @click="goTo('/projects')" class="btn btn-primary">
+          Projects
+        </button>
+        <button @click="goTo('/repos')" class="btn btn-secondary">
+          Repositories
+        </button>
       </div>
     </div>
   </div>
@@ -39,7 +45,7 @@ getUser().then((res) => {
   user_data.value = res;
 })
 
-function goToRepos() {
-  router.push('/repos');
+function goTo(route: string) {
+  router.push(route);
 }
 </script>

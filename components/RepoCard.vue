@@ -30,8 +30,9 @@
 </template>
 
 <script setup lang="ts">
+import { customClassLanguage, formatLanguageForMDI } from '../utils/classLang';
 import { UserRepos } from '../types/gh';
-import { MdiIconString } from 'nuxt-mdi/dist/runtime/components/MdiIcon';
+import { MdiIconString } from "nuxt-mdi/dist/runtime/components/MdiIcon";
 
 defineProps({
   repos: {
@@ -40,61 +41,7 @@ defineProps({
   },
 });
 
-const formatLanguageForMDI = (language: string): MdiIconString => {
-  if (!language) { return 'mdiLanguageTypescript' }
-
-  if (language === 'Vue') { return 'mdiVuejs' }
-
-  if (language === 'SCSS') { return 'mdiSass' }
-
-  return `mdiLanguage${language
-    .charAt(0)
-    .toUpperCase() + language
-    .slice(1)
-    .toLowerCase()
-  }` as MdiIconString;
-};
-
-const customClassLanguage = (language: string): string => {
-  if (!language) return 'text-base-content'
-
-  return `${language.toLowerCase()}-lang`;
-};
-
-// console.log(languages.value);
-
 function redirectToLink(link: string) {
   window.open(link, '_blank');
 }
 </script>
-
-<style scoped>
-.text-base-content {
-  color: #3973aa;
-}
-
-/* make for typescript, javascript, kotlin and java with their colors */
-.typescript-lang {
-  color: #3973aa;
-}
-
-.javascript-lang {
-  color: #f1e05a;
-}
-
-.kotlin-lang {
-  color: #6c33f1;
-}
-
-.java-lang {
-  color: #b07219;
-}
-
-.vue-lang {
-  color: #41b883;
-}
-
-.scss-lang {
-  color: #c69;
-}
-</style>
