@@ -26,6 +26,7 @@
     "@octokit/core": "^5.0.0",
     "@pinia/nuxt": "^0.4.11",
     "axios": "^1.4.0",
+    "node-fetch-native": "^1.4.0",
     "pinia": "^2.1.6",
     "theme-change": "^2.5.0",
     "zod": "^3.22.2"
